@@ -11,12 +11,21 @@
     </div>
     <div>
       Because there are loads of different kinds of devices, device driver programming is structured
-      in a way that makes code as clean as possible.
+      in a way that makes code as clean as possible. By clean as possible I mean drivers provide
+      specific functions with specific signatures and specific data structures so that they are
+      abstracted. Them being "abstracted" makes it so that the kernel doesn't have to write special
+      code for different drivers. It expects the driver to have a certain function defined a
+      certain way so that it can just say, "give me data", or "here is some data" and that way for
+      any device. However, there are 3 main classes of device so it isn't exactly a 1 size fits all.
+      The different classes being because some devices, like a network device stream data and so the
+      timing and the amount of data for that class of device is different from say a storage device
+      like a hard drive, or usb stick.
       <br/>
       The highlights of how this is done are:
       <ul>
         <li>Inversion of Control</li>
         <li>Operations Table</li>
+        <li>Classes of Device</li>
       </ul>
     </div>
 
@@ -37,6 +46,11 @@
       <br/>
       There is a struct for each class of situations, e.g. power management, character I/O,
       block I/O, network socket I/O...
+    </div>
+
+    <div>
+      <b>Classes of Device</b>
+      Character . . . Block . . . Network . . .
     </div>
   </body>
 </html>
