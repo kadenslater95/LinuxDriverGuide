@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  </head>
+  <body>
+    <div>
+      The purpose of the Big Picture is to get you familiar with the common patterns across
+      all device repos so that you can start wrapping your head around already existing
+      driver code, sooner rather than later.
+    </div>
+    <div>
+      Because there are loads of different kinds of devices, device driver programming is structured
+      in a way that makes code as clean as possible.
+      <br/>
+      The highlights of how this is done are:
+      <ul>
+        <li>Inversion of Control</li>
+        <li>Operations Table</li>
+      </ul>
+    </div>
+
+    <div>
+      <b>Inversion of Control</b>
+      The kernel is the running program. It just calls functions that have "standard" names when it
+      wants/needs input from your device. e.g. When a device goes to sleep it will check if you
+      have specified a `sleep` function and call it. Similarly, it checks for a `resume` function
+      when it wakes up. More on these functions in the Operations Table.
+    </div>
+
+    <div>
+      <b>Operations Table</b>
+      The word table is used loosely, its just what they call it. The methods I was mentioning about
+      sleep and resume are put on a `struct dev_pm_ops` as a `sleep` and ...<br/>
+
+      <br/>
+      <br/>
+      There is a struct for each class of situations, e.g. power management, character I/O,
+      block I/O, network socket I/O...
+    </div>
+  </body>
+</html>
